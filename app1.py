@@ -75,6 +75,7 @@ col1, col2 = st.columns([1, 1.2])
 with col1:
     st.subheader("Chat")
     user_input = st.text_input("Enter your input:", key="user_input")
+    
 
     if user_input:
         # Append user message
