@@ -41,3 +41,16 @@ langchain
 chromadb
 tiktoken
 gitpython
+streamlit
+pandas
+langchain
+langchain-community
+langchain-openai
+sqlparse
+python-dotenv
+openai
+chromadb
+pymysql
+pyodbc
+cx-Oracle
+SQLAlchemy
