@@ -36,3 +36,8 @@ faiss-cpu
 protobuf
 sentence-transformers
 langchain_chroma
+streamlit
+langchain
+chromadb
+tiktoken
+gitpython

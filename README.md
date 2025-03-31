@@ -80,3 +80,66 @@ This Streamlit application allows users to generate and display MermaidJS diagra
 -   The application uses the `gemini-2.0-flash` model for faster response times.
 
 ## Example Input
+
+# Git Repository Analyzer
+
+A Streamlit application that analyzes Git repositories and automatically generates documentation using AI.
+
+## Features
+
+- **Repository Analysis**: Clone and analyze any public Git repository
+- **README Generation**: Automatically create comprehensive README.md files
+- **Sequence Diagrams**: Generate Mermaid sequence diagrams showing component interactions
+- **Flow Diagrams**: Create Mermaid flowcharts illustrating process flows
+
+## How It Works
+
+1. The application clones the specified Git repository
+2. Code files are extracted and loaded into a document processing pipeline
+3. The text is chunked and embedded using OpenAI embeddings
+4. A vector database (ChromaDB) stores the embeddings for semantic search
+5. LangChain prompts with GPT-4o generate documentation and diagrams
+6. Results are displayed in a user-friendly Streamlit interface
+
+## Installation
+
+1. Clone this repository
+2. Install the required dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+3. Get an OpenAI API key from [OpenAI's platform](https://platform.openai.com)
+
+## Usage
+
+1. Run the Streamlit application:
+   ```
+   streamlit run app.py
+   ```
+2. Enter your OpenAI API key in the sidebar
+3. Paste the URL of a Git repository you want to analyze
+4. Click "Analyze Repository" and wait for the results
+5. View and download the generated documentation
+
+## Technologies Used
+
+- **Streamlit**: For the web interface
+- **LangChain**: For creating chains of LLM operations
+- **ChromaDB**: For vector storage of code chunks
+- **OpenAI**: For generating documentation and diagrams
+- **Mermaid**: For rendering sequence and flow diagrams
+
+## Limitations
+
+- Large repositories may take longer to process
+- The quality of documentation depends on the code quality and comments
+- OpenAI API usage incurs costs based on token consumption
+
+## Future Improvements
+
+- Add support for private repositories
+- Implement custom diagram styling
+- Create options for different documentation formats
+- Add code quality analysis
+- Include test coverage reporting
+
