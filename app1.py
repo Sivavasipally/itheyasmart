@@ -60,7 +60,7 @@ def render_mermaid_html(mermaid_code):
 
 # Set up Streamlit page
 st.set_page_config(page_title="LangChain + MermaidJS", layout="wide")
-st.title("Chat + MermaidJS Diagram Generator")
+st.title("dictate for Diagram ")
 
 # Session state
 if "chat_history" not in st.session_state:
@@ -106,6 +106,6 @@ with col1:
 
 # Mermaid Diagram section
 with col2:
-    st.subheader("MermaidJS Diagram")
+    st.subheader(" Here is you updated")
     mermaid_html = render_mermaid_html(st.session_state.mermaid_code)
     st.components.v1.html(mermaid_html, height=500, scrolling=True)  # adjust height as needed

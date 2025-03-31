@@ -1,4 +1,4 @@
-# Chat + MermaidJS Diagram Generator
+# Smart diagram
 
 This Streamlit application allows users to generate and display MermaidJS diagrams through a chat-like interface powered by the Gemini AI model.
 
