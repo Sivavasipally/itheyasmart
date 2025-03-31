@@ -1,0 +1,104 @@
+{
+  "systems": [
+    {
+      "name": "Online Banking System",
+      "description": "Allows customers to view information and make transactions",
+      "type": "Internal"
+    },
+    {
+      "name": "Mainframe Banking System",
+      "description": "Stores core banking data",
+      "type": "External"
+    },
+    {
+      "name": "Email System",
+      "description": "Sends notifications to customers",
+      "type": "External"
+    }
+  ],
+  "persons": [
+    {
+      "name": "Customer",
+      "description": "A customer of the bank"
+    },
+    {
+      "name": "Bank Staff",
+      "description": "Bank employees that manage customer accounts"
+    }
+  ],
+  "containers": {
+    "OnlineBankingSystem": [
+      {
+        "name": "Web Application",
+        "description": "Allows customers to check account balances and make payments",
+        "technology": "ReactJS"
+      },
+      {
+        "name": "Mobile App",
+        "description": "Enables banking on the go",
+        "technology": "Flutter"
+      },
+      {
+        "name": "API Application",
+        "description": "Handles core business logic and exposes APIs",
+        "technology": "Spring Boot"
+      },
+      {
+        "name": "Database",
+        "description": "Stores user and transaction data",
+        "technology": "PostgreSQL"
+      }
+    ]
+  },
+  "components": {
+    "OnlineBankingSystem_APIApplication": [
+      {
+        "name": "Authentication Service",
+        "description": "Handles login and security",
+        "technology": "Spring Security"
+      },
+      {
+        "name": "Accounts Controller",
+        "description": "Manages account info and transaction APIs",
+        "technology": "Spring MVC"
+      },
+      {
+        "name": "Notification Service",
+        "description": "Sends SMS/Email alerts",
+        "technology": "Java Mail, Twilio"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "source_id": "Customer",
+      "target_id": "OnlineBankingSystem",
+      "description": "Uses"
+    },
+    {
+      "source_id": "OnlineBankingSystem_WebApplication",
+      "target_id": "OnlineBankingSystem_APIApplication",
+      "description": "Makes API calls to"
+    },
+    {
+      "source_id": "OnlineBankingSystem_MobileApp",
+      "target_id": "OnlineBankingSystem_APIApplication",
+      "description": "Makes API calls to"
+    },
+    {
+      "source_id": "OnlineBankingSystem_APIApplication",
+      "target_id": "OnlineBankingSystem_Database",
+      "description": "Reads from and writes to"
+    },
+    {
+      "source_id": "OnlineBankingSystem_APIApplication",
+      "target_id": "MainframeBankingSystem",
+      "description": "Fetches core banking data from"
+    },
+    {
+      "source_id": "OnlineBankingSystem_NotificationService",
+      "target_id": "EmailSystem",
+      "description": "Sends email notifications"
+    }
+  ]
+}

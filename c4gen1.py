@@ -3,7 +3,7 @@ import re
 import base64
 import tempfile
 import os
-
+import json
 
 def clean_id(text):
     """Clean text to create valid Mermaid IDs"""
@@ -59,6 +59,33 @@ def generate_html_with_mermaid(mermaid_code):
 </html>"""
     return html_content
 
+def parse_c4_file(uploaded_file):
+    try:
+        content = uploaded_file.read().decode("utf-8")
+        data = json.loads(content)
+
+        if 'systems' in data:
+            for system in data['systems']:
+                system['id'] = clean_id(system['name'])
+            st.session_state.systems = data['systems']
+
+        if 'persons' in data:
+            for person in data['persons']:
+                person['id'] = clean_id(person['name'])
+            st.session_state.persons = data['persons']
+
+        if 'containers' in data:
+            st.session_state.containers = data['containers']
+
+        if 'components' in data:
+            st.session_state.components = data['components']
+
+        if 'relationships' in data:
+            st.session_state.relationships = data['relationships']
+
+        st.success("C4 model loaded successfully from file!")
+    except Exception as e:
+        st.error(f"Failed to load C4 file: {e}")
 
 def create_html_file(mermaid_code):
     """Create a temporary HTML file with the Mermaid diagram"""
@@ -84,6 +111,11 @@ def main():
     This application helps you create C4 model diagrams using Mermaid.js.
     The C4 model provides a way to visualize software architecture at different levels of abstraction.
     """)
+
+    # Upload C4 JSON file
+    uploaded_file = st.file_uploader("Upload C4 JSON File", type=["json"])
+    if uploaded_file:
+        parse_c4_file(uploaded_file)
 
     # Initialize session state variables if they don't exist
     if 'step' not in st.session_state:
