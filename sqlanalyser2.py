@@ -1,12 +1,12 @@
 import streamlit as st
 import pandas as pd
-from langchain.agents import create_sql_agent
-from langchain.agents.agent_toolkits import SQLDatabaseToolkit
-from langchain.sql_database import SQLDatabase
+from langchain_community.agent_toolkits.sql.base import create_sql_agent
+from langchain_community.agent_toolkits.sql.toolkit   import SQLDatabaseToolkit
+from langchain_community.utilities import SQLDatabase
 from langchain_community.vectorstores import Chroma
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.tools.sql_database.tool import QuerySQLDataBaseTool
+from langchain_community.tools.sql_database.tool import QuerySQLDataBaseTool
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain_core.documents import Document
@@ -42,7 +42,7 @@ db_type = st.sidebar.selectbox(
 
 # Connection details
 if db_type == "SQLite":
-    db_path = st.sidebar.text_input("SQLite Database Path", "example.db")
+    db_path = st.sidebar.text_input("SQLite Database Path", "retail_sales_db")
     connection_string = f"sqlite:///{db_path}"
     connect_args = {}
 else:
