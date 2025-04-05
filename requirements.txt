@@ -54,3 +54,9 @@ pymysql
 pyodbc
 cx-Oracle
 SQLAlchemy
+mcp
+python-dotenv
+google-genai
+Pillow
+# pywinauto
+asyncio
