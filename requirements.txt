@@ -60,3 +60,9 @@ google-genai
 Pillow
 # pywinauto
 asyncio
+flask
+google-api-python-client
+flask-cors
+beautifulsoup4
+trafilatura
+markdownify

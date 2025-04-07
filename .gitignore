@@ -9,6 +9,7 @@ research/db/*
 db/*
 # Distribution / packaging
 .Python
+node_modules/
 build/
 develop-eggs/
 faiss_index/
