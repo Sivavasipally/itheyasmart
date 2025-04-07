@@ -6,8 +6,66 @@ This Streamlit application allows users to generate and display MermaidJS diagra
 -   **Real-time diagram rendering**
 -   **Persistent session state**
 -   **Clean separation of chat and svisualization**
-## Features
+-----------------------------------------------------------------
+- code gen
+- Initialize App: Load environment variables, configure Gemini API, and set up Streamlit layout.
+- Sidebar Inputs: Collect OpenAI API key, Git repo URL, and branch name from the user.
 
+- Swagger Input: Allow users to provide Swagger specs via URL, file upload, or direct paste.
+
+- Parse Swagger: Convert Swagger JSON/YAML into a Python dictionary and extract available model names.
+
+- Model Selection: User selects a model (entity) from the parsed Swagger definitions.
+
+- Clone Git Repo: Clone the specified GitHub repository to a temporary local directory.
+
+- Process Repo: Load .java, .xml, .yml, etc., files from the repo using LangChain's TextLoader.
+
+- Build Vector DB: Split repo files into chunks, embed them using Gemini embeddings, and store them in ChromaDB.
+
+- Generate Code: Use LangChain's RetrievalQA + Gemini to generate:
+
+- Model class
+
+- Repository interface
+
+- Service interface/impl
+
+- Controller class
+
+- Feign client
+
+- Display Output: Show all generated Java code components in collapsible sections with syntax highlighting.## Features
+
+----------------------------------------------------------------------
+- code analysis
+This Streamlit application, "Git Repository Analyzer," clones a Git repository, analyzes its code, and generates comprehensive documentation using Google's Gemini model and related tools. It features:
+
+Input Handling:
+Accepts OpenAI API key via sidebar
+Takes Git repository URL as input
+Core Functionality:
+Clones repository to temporary directory
+Extracts code files based on common extensions
+Processes files into a vector store using Chroma and embeddings
+Generates three outputs:
+README.md with project details
+Mermaid sequence diagram showing component interactions
+Mermaid flow diagram showing process flows
+UI Components:
+Three tabs for displaying generated content
+Modal windows for full-screen diagram viewing
+Download options for README.md and diagram HTML files
+Technology Stack:
+Uses LangChain for LLM operations
+ChromaDB for vector storage
+Google GenerativeAI for embeddings and text generation
+MermaidJS for diagram rendering
+
+The app starts with an input form, processes the repository on button click, and presents results in an organized tabbed interface with interactive diagram viewing capabilities, cleaning up temporary files after processing.
+
+
+--------------------------------------------------------------------
 -   **Chat Interface:** Users can input text instructions or requests for diagram generation.
 -   **Gemini AI Integration:** The Gemini AI model processes user input and generates MermaidJS code.
 -   **MermaidJS Rendering:** The generated MermaidJS code is rendered as an interactive diagram within the application.
